@@ -13,6 +13,8 @@ Image comming soon
 <br>
 <h3>The Below is A Basic Register Screen </h3>
 
+![](App Version 2.0/Register.png)
+
 <h3> The Login Screen Where the follwing can sign in and get different Screen as Per their priority<br>
    <ol>
   <li>Normal User : who asks a question</li>
