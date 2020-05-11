@@ -9,3 +9,14 @@ A Basic Question And Answer Application made using Flask with Backend as MySQL
 
 <br>
 <h2> The Below is The How The Home Screen Looks </h2>
+Image comming soon 
+<br>
+<h3>The Below is A Basic Register Screen </h3>
+
+<h3> The Login Screen Where the follwing can sign in and get different Screen as Per their priority<br>
+   <ol>
+  <li>Normal User : who asks a question</li>
+  <li>Expert User : Who Answers A Question</li>
+  <li>Admin User: Who can see all the list of Experts</li>
+</ol> 
+  </h3>
