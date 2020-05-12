@@ -8,8 +8,9 @@ A Basic Question And Answer Application made using Flask with Backend as MySQL
 </h3>
 
 <br>
-<h2> The Below is The How The Home Screen Looks </h2>
-![]()
+<h2> The Below is The How The Home Screen Looks <br>
+Here Only Answered Questions Are Visible</h2>
+![](https://raw.githubusercontent.com/reuben21/Question-and-Answer-Application-using-Flask-with-MySQL/master/App%20Version%203.0/home.png)
 <br>
 <h3>The Below is A Basic Register Screen </h3>
 
