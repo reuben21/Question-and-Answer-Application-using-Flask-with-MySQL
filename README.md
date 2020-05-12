@@ -29,3 +29,8 @@ Here Only Answered Questions Are Visible</h2>
 <h3> Asking A Specific Expert A Question </h3>
 
 ![](https://raw.githubusercontent.com/reuben21/Question-and-Answer-Application-using-Flask-with-MySQL/master/App%20Version%202.0/askaQ.png)
+
+<h3>After An Admin Signs in Below is the preview of its home screen </h3>
+<img src="" >
+<h3> The Users Page is Only Visible to the Admin and Can be Accessed By Him/her Only</h3>
+<img src="" >
