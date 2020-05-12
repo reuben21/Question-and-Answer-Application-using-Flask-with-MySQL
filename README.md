@@ -34,3 +34,4 @@ Here Only Answered Questions Are Visible</h2>
 <img src="https://raw.githubusercontent.com/reuben21/Question-and-Answer-Application-using-Flask-with-MySQL/master/App%20Version%203.0/adminS1.png" >
 <h3> The Users Page is Only Visible to the Admin and Can be Accessed By Him/her Only</h3>
 <img src="https://raw.githubusercontent.com/reuben21/Question-and-Answer-Application-using-Flask-with-MySQL/master/App%20Version%203.0/users.png" >
+<h3>In the Above Screen Shot the Admin Can Promote A normal User to be an Expert who can answer Questions to the Users</h3>
