@@ -4,12 +4,12 @@ A Basic Question And Answer Application made using Flask with Backend as MySQL
   The user has choice to select which expert he wants to ask<br>
   By default after registering your are only a user , <br> Only the admin can change the priority of the user to either an Expert<br>
 </h2>
-<h3> Updated File App Version 2.0 <br>
+<h3> Updated File App Version 3.0 <br>
 </h3>
 
 <br>
 <h2> The Below is The How The Home Screen Looks </h2>
-Image comming soon 
+![]()
 <br>
 <h3>The Below is A Basic Register Screen </h3>
 
