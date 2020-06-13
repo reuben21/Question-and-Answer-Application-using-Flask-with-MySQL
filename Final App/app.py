@@ -8,7 +8,7 @@ import os
 
 try:
     host="localhost";user="root";dbname="QandA"
-    conn = pymysql.connect(host, user=user,port=3306,passwd="", db=dbname)
+    pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
 except Exception as e:
 	print(e)
@@ -24,7 +24,7 @@ def get_current_user():
         user=session['user']
         # print("The User is ",user)
         host="localhost";user1="root";dbname="QandA"
-        conn = pymysql.connect(host, user=user1,port=3306,passwd="", db=dbname)
+        conn = pymysql.connect(host, user=user1,port=3306,passwd="reuben", db=dbname)
         cursor=conn.cursor()
         cursor.execute("SELECT * from users where name=%s",(user))
         user_result=cursor.fetchall()
@@ -39,7 +39,7 @@ def get_current_user():
 @app.route('/')
 def index():
     user_dict = get_current_user()
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("""select questions.id as question_id, questions.question_text, askers.name as asker_name, experts.name as expert_name 
                         from questions 
@@ -64,7 +64,7 @@ def register():
     if request.method=='POST':
         name=request.form['name']
         password=request.form['password']
-        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
         cursor1=conn1.cursor()
         cursor1.execute("select id from users where name=%s",(name))
         check_id=cursor1.fetchall()
@@ -79,7 +79,7 @@ def register():
             else:
                 hashed_password=generate_password_hash(password,method="sha256")
                 host="localhost";user="root";dbname="QandA"
-                conn = pymysql.connect(host, user=user,port=3306,passwd="", db=dbname)
+                conn=pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
                 cursor=conn.cursor()
                 cursor.execute("INSERT into users(name,password,expert,admin) values (%s,%s,%s,%s)",(name,hashed_password,0,0))
                 conn.commit()
@@ -98,7 +98,7 @@ def login():
         name=request.form['name']
         password=request.form['password']
         host="localhost";user23="root";dbname="QandA"
-        conn = pymysql.connect(host, user=user23,port=3306,passwd="", db=dbname)
+        conn =pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
         cursor=conn.cursor()
         cursor.execute("SELECT id,name,password from users where name=%s",(name))
         result=cursor.fetchall()
@@ -119,7 +119,7 @@ def question(question_id):
     user = get_current_user()
     if not user:
         return redirect(url_for('login'))
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor() 
     cursor.execute("""select questions.question_text, questions.answer_text, askers.name as asker_name, experts.name as expert_name 
                     from questions 
@@ -144,13 +144,13 @@ def answer(question_id):
         return redirect(url_for('login'))
     if request.method=="POST":
         answer=request.form['answer']
-        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
         cursor1=conn1.cursor()
         cursor1.execute("Update questions set answer_text=%s where id=%s",(answer,question_id))
         conn1.commit()
         conn1.close()  
         return redirect(url_for('unanswered'))
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("select id,question_text from questions where id=%s",(question_id))
     question=cursor.fetchall()
@@ -173,7 +173,7 @@ def ask():
         print(user)
         Question=request.form['question']
         ExpertId=request.form['expert']
-        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+        conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
         cur=conn1.cursor()
         cur.execute("INSERT into questions (question_text,asked_by_id, expert_id) values(%s,%s,%s);",(Question,user['id'],ExpertId))
         conn1.commit()
@@ -181,11 +181,11 @@ def ask():
         
     
     
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("SELECT id,name from users where expert=1")
     expert_result=cursor.fetchall()
-    print("expert result:",expert_result[0][1])
+    # print("expert result:",expert_result[0][1])
     expert_list=[]
     
     for i in expert_result:
@@ -202,7 +202,7 @@ def unanswered():
     user = get_current_user()
     if not user:
         return redirect(url_for('login'))
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("SELECT questions.id,questions.question_text,users.name from questions join users on users.id=questions.asked_by_id where questions.answer_text is null and questions.expert_id=%s",(user['id']))
     qcurse=cursor.fetchall()
@@ -220,7 +220,7 @@ def users():
     user = get_current_user()
     if not user:
         return redirect(url_for('login'))
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("Select id ,name,expert,admin from users")
     results=cursor.fetchall()
@@ -240,12 +240,12 @@ def promote(user_id):
     user = get_current_user()
     if not user:
         return redirect(url_for('login'))
-    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor=conn.cursor()
     cursor.execute("Update users set expert=1 where id =%s",(user_id))
     conn.commit()
     conn.close()
-    conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="", db="QandA")
+    conn1 = pymysql.connect(host="localhost", user="root",port=3306,passwd="reuben", db="QandA")
     cursor1=conn1.cursor()
     cursor1.execute("Select id ,name,expert,admin from users")
     results=cursor1.fetchall()
